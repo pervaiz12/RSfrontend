@@ -1,0 +1,33 @@
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">UserName</th>
+            <th scope="col">LeaveType</th>
+            <th scope="col">Reason</th>
+            <th scope="col">Attatchment</th>
+            <th scope="col">leave </th>
+            <th scope="col">Date</th>
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor=" let e of requests?.data  let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{e?.user_id.username}}</td>
+            <td>{{e?.leaveType}}</td>
+            <td>{{e?.reason}}</td>
+            <td> <img src="http://localhost:5000/{{ e?.attachment}}" width="80" alt="sorry"></td>
+            <td>{{e?.count}}</td>
+            <td>{{e?.createdAt| date:'dd-MM-yyyy '}}</td>
+            <td> <button class="btn btn-sm btn-success" (click)="approved(e._id)">Approve</button></td>
+            <td> <button class="btn btn-sm btn-danger" (click)="reject(e._id)">Reject</button></td>
+
+
+
+            <td></td>
+
+        </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,51 @@
+<!-- Sidebar  -->
+<div class="sidebar">
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>{{username}}</h3>
+    </div>
+    <ul class="">
+      <li *ngIf="username=='admin'">
+        <a routerLink="/admindashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li *ngIf="username!='admin'">
+        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profile</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <a routerLink="/employee" routerLinkActive="active">Employee</a>
+          </li>
+          <li>
+            <a routerLink="/employment" routerLinkActive="active">Employment</a>
+          </li>
+          <li>
+            <a routerLink="/userInformation" routerLinkActive="active">User Information</a>
+          </li>
+          <li>
+            <a routerLink="/qualification" routerLinkActive="active">Qualification && Experience</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="active">
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Time Off Leave</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li>
+            <a routerLink="/leaverequest" routerLinkActive="active">Requests</a>
+          </li>
+        </ul>
+      </li>
+
+
+
+      <li *ngIf="username=='admin'">
+        <a routerLink="/approvedleave" routerLinkActive="active">Leave Requests</a>
+      </li>
+      <li *ngIf="username=='admin'">
+        <a routerLink="/create" routerLinkActive="active">Create User</a>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,102 @@
+<div class="content_inner d-flex justify-content-between">
+    <div class="form_section">
+        <form [formGroup]="employmentForm" (ngSubmit)="employmentUpdate()">
+            <div class="form_tag"> <strong><i class="fa fa-user icon"></i>Personal Information </strong>
+                <hr class="mt-10">
+            </div>
+            <div class="form-group">
+                <label for="userDefinedCode">userDefinedCode:</label>
+                <input type="text" class="form-control" formControlName="userDefinedCode" id="userDefinedCode"
+                    placeholder="Enter userDefinedCode" name="userDefinedCode">
+            </div>
+            <div class="form-group">
+                <label for="empGrade">Grade</label>
+                <input type="text" class="form-control" formControlName="empGrade" id="empGrade"
+                    placeholder="Enter your last name" name="empGrade">
+            </div>
+            <div class="form-group">
+                <label for="location">Address</label>
+                <input type="text" class="form-control" formControlName="location" id="location"
+                    placeholder="Enter your Address" name="empGrade">
+            </div>
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <input type="text" class="form-control" formControlName="branch" id="branch"
+                    placeholder="Enter your branch" name="branch">
+            </div>
+            <!-- <div class="form-group">
+                <label for="lineManager">lineManager</label>
+                <input type="text" class="form-control" formControlName="lineManager" id="lineManager"
+                    placeholder="Enter your lineManager" name="lineManager">
+            </div> -->
+
+            <div class="form-group">
+                <label>lineManager</label>
+                <select formControlName="lineManager" name="lineManager" class="form-control">
+                    <option value="">select</option>
+
+                    <option *ngFor="let hero of listOfManager" value={{hero._id}}>{{hero.username}}</option>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="finAuthority">Final Authority</label>
+                <input type="text" class="form-control" formControlName="finAuthority" id="finAuthority"
+                    placeholder="Enter your finAuthority" name="finAuthority">
+            </div>
+            <div class="form-group">
+                <label for="probationPeriod">probationPeriod</label>
+                <input type="text" class="form-control" formControlName="probationPeriod" id="probationPeriod"
+                    placeholder="Enter your probationPeriod" name="probationPeriod">
+            </div>
+            <div class="form-group">
+                <label for="employmed">Employmed</label>
+                <input type="text" class="form-control" formControlName="employmed" id="employmed"
+                    placeholder="Enter your employmed" name="employmed">
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" formControlName="finalAuthority" type="checkbox" value=""
+                    id="finalAuthority">
+                <label class="form-check-label" for="finalAuthority">
+                    finalAuthority
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" formControlName="hod" type="checkbox" value="" id="hod">
+                <label class="form-check-label" for="hod">
+                    hod
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" formControlName="linemanager" type="checkbox" value="" id="linemanager">
+                <label class="form-check-label" for="linemanager">
+                    linemanager
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" formControlName="attendance" type="checkbox" value="" id="attendance">
+                <label class="form-check-label" for="attendance">
+                    Attendance
+                </label>
+            </div>
+
+            <div class="select_fields">
+                <div class="form-group">
+                    <label for="birthday"> DOB</label>
+                    <input type="date" id="birthday" formControlName="joiningDate" name="birthday" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="department">department</label>
+                    <select name="department" id="relgion" formControlName="department">
+                        <option value="">Select department</option>
+                        <option value="web development">web development</option>
+                        <option value="web design">web design
+                        <option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="save" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

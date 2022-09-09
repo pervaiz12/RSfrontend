@@ -1,0 +1,70 @@
+<div class="content_inner d-flex justify-content-between">
+    <div class="form_section">
+        <form [formGroup]="leaveRequestForm" (ngSubmit)="leaveRequestSubmit()">
+            <div class="form_tag"> <strong>Leave Request </strong>
+                <hr class="mt-10">
+            </div>
+            <div class="form-group">
+                <label>Leave Type</label>
+                <select formControlName="leaveType" name="gender" class="form-control">
+                    <option value="probation leave">probation leave</option>
+                </select>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" formControlName="short" type="checkbox" value="" id="short">
+                <label class="form-check-label" for="short">
+                    short
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date"  class="form-control" id="startDate" (ngModelChange)="setDate('start', $event)" placeholder="Enter Firs Name" name="startDate"
+                    formControlName="startDate">
+            </div>
+            <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" class="form-control" id="endDate" formControlName="endDate"
+                    placeholder="Enter your last name" name="endDate" (ngModelChange)="endDate('end', $event)">
+            </div>
+            <div class="form-group">
+                <label for="count">count:</label>
+                <input type="number" class="form-control" formControlName="count" id="count"
+                    placeholder="Enter Your count" name="count">
+            </div>
+            <div class="form-group">
+                <label for="totalCount">Total Count:</label>
+                <input type="number" class="form-control" formControlName="totalCount" id="totalCount"
+                    placeholder="Enter Your total count" name="totalCount">
+            </div>
+            <div class="form-outline mb-4">
+                <label for="reason " class="form-label" for="textAreaExample6">Reason:</label>
+                <textarea formControlName="reason" class="form-control" id="textAreaExample6" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="attachment">Attachment:</label>
+                <!-- <input type="text" class="form-control" id="attachment" formControlName="attachment"
+                    placeholder="Enter Attachment" name="attachment"> -->
+                <input id="file-input" #imageInput type="file" (change)="upload($event)" formControlName="attachment"
+                    accept="image/*">
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <button type="save" class="btn btn-primary">Submit</button>
+
+                </div>
+                <div class="col-4"> <a class="btn btn-sm btn-danger text-white" routerLink="/leaverequest"
+                        routerLinkActive="active">Cancel</a>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $('.datepicker').datepicker({ 
+        startDate: new Date()
+    });
+    </script>

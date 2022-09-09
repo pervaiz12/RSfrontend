@@ -1,0 +1,325 @@
+<!-- <form [formGroup]="profileForm" class="container   mt-3" (ngSubmit)="profileUpdate()">
+    <div class="col-md-6 container post_data">
+
+        <div class="row justify-content-center">
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+                        <div> <small *ngIf=" profileForm.get('email')?.value != null && profileForm.get('email')?.touched && profileForm.get('email')?.errors &&
+                                !profileForm.get('email')?.errors?.['yyy']">Invalid
+                                Email </small></div>
+                        <div>
+                            <small
+                                *ngIf=" profileForm.get('email')?.invalid && ngsubmit 
+                            && !profileForm.get('email')?.errors?.['yyy'] 
+                            && !(profileForm.get('email')?.value != null && profileForm.get('email')?.touched && profileForm.get('email')?.errors)">Enter
+                                Email</small>
+                        </div>
+                        <div> <small *ngIf="profileForm.get('email')?.errors?.['yyy']">invalid Email</small>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">username</label>
+                        <input type="username" class="form-control" formControlName="username" placeholder="username">
+
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">fname</label>
+                        <input type="fname" class="form-control" formControlName="fname" placeholder="fname">
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">lastname</label>
+                        <input type="lastname" class="form-control" formControlName="lastname" placeholder="lastname">
+
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">title</label>
+                        <input type="title" class="form-control" formControlName="title" placeholder="title">
+
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">company</label>
+                        <input type="company" class="form-control" formControlName="company" placeholder="company">
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">role</label>
+                        <input type="role" class="form-control" formControlName="role" readonly placeholder="role">
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div class="col-12">
+                <div class="from-group">
+                    <label for="salutation">salutation</label>
+                    <input type="salutation" class="form-control" formControlName="salutation" placeholder="salutation">
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">fatherName</label>
+                    <input type="fatherName" class="form-control" formControlName="fatherName" placeholder="fatherName">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">gender</label>
+                    <input type="gender" class="form-control" formControlName="gender" placeholder="gender">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">maritalStatus</label>
+                    <input type="maritalStatus" class="form-control" formControlName="maritalStatus"
+                        placeholder="maritalStatus">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">religion</label>
+                    <input type="religion" class="form-control" formControlName="religion" placeholder="religion">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">nationality</label>
+                    <input type="nationality" class="form-control" formControlName="nationality"
+                        placeholder="nationality">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">bloodgroup</label>
+                    <input type="bloodgroup" class="form-control" formControlName="bloodgroup" placeholder="bloodgroup">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">dob</label>
+                    <input type="date" class="form-control" formControlName="dob" placeholder="dob">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-4 btn"> <button type="submit"
+                        class="btn btn-primary form-group mt-2 mb-2">update</button>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</form> -->
+
+
+
+<div class="content_inner d-flex justify-content-between">
+  <div class="form_section">
+    <form [formGroup]="profileForm" (ngSubmit)="profileUpdate()">
+      <div class="form_tag"> <strong><i class="fa fa-user icon"></i>Personal Information </strong>
+        <hr class="mt-10">
+      </div>
+      <div class="form-group">
+        <label for="fname">First Name:</label>
+        <input type="text" formControlName="fname" readonly class="form-control" id="firstname" placeholder="Enter Firs Name"
+          name="firstname">
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" class="form-control" formControlName="lastname" readonly id="lastname"
+          placeholder="Enter your last name" name="lastname">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" formControlName="email" readonly id="firstname" placeholder="Enter Firs Name"
+          name="email">
+      </div>
+      <div class="form-group">
+        <label for="username">UserName:</label>
+        <input type="text" class="form-control" readonly formControlName="username" id="fathername"
+          placeholder="Enter Your username" name="fathername">
+      </div>
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" formControlName="title" readonly id="fathername" placeholder="Enter Your title"
+          name="title">
+      </div>
+      <div class="form-group">
+        <label for="company">Company:</label>
+        <input type="text" class="form-control" readonly formControlName="company" id="fathername"
+          placeholder="Enter Your company" name="company">
+      </div>
+      <!-- 
+      <div class="form-group">
+        <label>Gender</label>
+        <select name="gender" formControlName="role" for="gender" class="form-control">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div> -->
+
+      <div class="form_tag"> <strong><i class="fa fa-user icon"></i>Personal Information </strong>
+        <hr class="mt-10">
+      </div>
+      <div class="form-group">
+        <label for="fatherName">Father Name:</label>
+        <input type="text" formControlName="fatherName" class="form-control" id="firstname"
+          placeholder="Enter Firs Name" name="firstname">
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <select formControlName="gender" name="gender" class="form-control">
+          <option value="">Select Relgion</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <div class="select_fields">
+        <div class="form-group">
+          <label for="bloodgroup">bloodgroup</label>
+          <select name="bloodgroup" id="relgion" formControlName="bloodgroup">
+            <option value="">Select bloodgroup</option>
+            <option value="O+">O+</option>
+            <option value="A+">A +</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="salutation">salutation</label>
+          <select name="salutation" formControlName="salutation" id="nationality">
+            <option value="">Select salutation</option>
+            <option value="Mr">Mr</option>
+            <option value="Ms">Ms</option>
+          </select>
+        </div>
+      </div>
+      <div class="select_fields">
+        <div class="form-group">
+          <label for="birthday"> DOB</label>
+          <input type="date" id="birthday" formControlName="dob" name="birthday" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="marital_status">Marital Status</label>
+          <select name="marital_status" formControlName="maritalStatus" id="marital_status">
+            <option value="">-Select Marital Status-</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+          </select>
+        </div>
+      </div>
+      <div class="select_fields">
+        <div class="form-group">
+          <label for="relgion">Relgion</label>
+          <select name="relgion" id="relgion" formControlName="religion">
+            <option value="">Select Relgion</option>
+            <option value="islam">Islam</option>
+            <option value="hinduism">Hinduism</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="nationality">Nationality</label>
+          <select name="nationality" formControlName="nationality" id="nationality">
+            <option value="">Select Nationality</option>
+            <option value="islam">Pakistani</option>
+            <option value="indian">Indian</option>
+          </select>
+        </div>
+      </div>
+
+
+
+
+      <div class="form_tag"> <strong><i class="fa fa-user icon"></i>Quick Contact</strong>
+        <hr class="mt-10">
+      </div>
+      <div class="form-group">
+        <label for="lineNumber">lineNumber:</label>
+        <input type="text" formControlName="lineNumber" class="form-control" id="firstname"
+          placeholder="Enter LineNumber" name="lineNumber">
+      </div>
+      <div class="form-group">
+        <label for="quickEmail">quickEmail</label>
+        <input type="text" class="form-control" formControlName="quickEmail" id="quickEmail"
+          placeholder="Enter your last name" name="quickEmail">
+      </div>
+      <div class="form-group">
+        <label for="mobile">mobile:</label>
+        <input type="text" class="form-control" formControlName="mobile" id="firstname" placeholder="Enter Mobile"
+          name="mobile">
+      </div>
+
+
+
+      <div class="form_tag"> <strong><i class="fa fa-user icon"></i>Personal Information </strong>
+        <hr class="mt-10">
+      </div>
+      <div class="form-group">
+        <label for="CNIC">CNIC:</label>
+        <input type="text" formControlName="CNIC" class="form-control" id="firstname" placeholder="Enter CNIC"
+          name="CNIC">
+      </div>
+      <div class="form-group">
+        <label for="CNICExpire">CNICExpire</label>
+        <input type="date" class="form-control" formControlName="CNICExpire" id="CNICExpire"
+          placeholder="Enter your last name" name="CNICExpire">
+      </div>
+
+
+      <div class="form_tag"> <strong><i class="fa fa-user icon"></i>Driving</strong>
+        <hr class="mt-10">
+      </div>
+      <div class="form-group">
+        <label for="licenseNo">licenseNo:</label>
+        <input type="text" formControlName="licenseNo" class="form-control" id="firstname" placeholder="Enter licenseNo"
+          name="licenseNo">
+      </div>
+      <div class="form-group">
+        <label for="liceseExpire">liceseExpire</label>
+        <input type="date" class="form-control" formControlName="liceseExpire" id="liceseExpire"
+          placeholder="Enter your last name" name="liceseExpire">
+      </div>
+
+      <button type="save" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="profile_card">
+    <div class="card">
+      <div class="profile_image">
+        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="John">
+      </div>
+      <h1>{{userName}}</h1>
+      <p class="title">{{title}}</p>
+      <p>{{company}}</p>
+    </div>
+  </div>
+</div>

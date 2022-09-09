@@ -1,0 +1,68 @@
+<div>
+  <a class="btn btn-sm btn-success" routerLink="/createLeaveRequest" routerLinkActive="active">create</a>
+
+</div>
+
+<table class="table mt-5">
+  <thead>
+      <tr>
+          <th scope="col">Leave Type</th>
+          <th scope="col">Balance</th>
+          <th scope="col">Availed</th>
+          <th scope="col">Available</th>
+          <th scope="col">pending</th>
+
+      </tr>
+  </thead>
+  <tbody>
+      <!-- <tr *ngFor="let e of posts?.data "> -->
+      <tr>
+
+          <td>{{requ?.leavetype}}</td>
+
+          <td>{{requ?.balance}}</td>
+          <td>{{requ?.availed}}</td>
+          <td>{{requ?.available}}</td>
+          <td>{{requ?.pending}}</td>
+
+
+      </tr>
+
+  </tbody>
+</table>
+
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Code</th>
+      <th scope="col">Employee</th>
+      <th scope="col">Department</th>
+      <th scope="col">leaveType</th>
+      <th scope="col">Next Request</th>
+      <th scope="col">count</th>
+      <th scope="col">Dates</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let e of posts?.data "> -->
+    <tr *ngFor=" let e of requests  let i = index">
+
+      <th scope="row">{{i+1}}</th>
+      <td>{{usercode}}</td>
+      <td>{{username}}</td>
+      <td> {{department}} </td>
+      <td>{{e.leaveType}}</td>
+      <td>{{lineManager}}</td>
+      <td>{{e.count}}</td>
+      <td>{{e.createdAt| date:'dd-MM-yyyy '}}</td>
+      <td>{{e.status}}</td>
+      <td></td>
+      <td></td>
+
+    </tr>
+
+  </tbody>
+</table>
