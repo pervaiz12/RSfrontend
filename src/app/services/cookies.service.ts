@@ -9,12 +9,13 @@ export class CookiesService {
 
   constructor(private cookieService: CookieService) { }
 
-  saveAuthData(token: string, expirationDate: any, username: any) {
+  saveAuthData(token: string, refreshToken: any, expirationDate: any, username: any) {
     // this.cookieService.set('token', token);
     const now = new Date();
     now.setHours(now.getHours() + 8);
     this.cookieService.set('token', token, now);
     this.cookieService.set('username', username)
+    this.cookieService.set("refreshToken", refreshToken)
 
   }
 
@@ -29,6 +30,11 @@ export class CookiesService {
     const userId = this.cookieService.get("token");
     console.log(userId)
     return userId
+  }
+  getRefreshToken() {
+    const userId = this.cookieService.get("refreshToken");
+    return userId
+
   }
   getAuthName() {
     const username = this.cookieService.get("username");

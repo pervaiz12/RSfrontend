@@ -21,7 +21,19 @@ export class TimeOffLeaveComponent implements OnInit {
   department: string = '';
   username: string = '';
   usercode: string = '';
-  lineManager: string = ''
+  lineManager: string = '';
+
+  //for pagination
+  //for page
+  POSTS: any;
+  page: number = 1;
+  count: number = 200;
+  tableSize: number = 10;
+  tableSizes: any = [10, 25, 50, 100];
+  pagelength: number = 10
+  start: Number = 0
+  search: any = ''
+
 
   constructor(private fb: FormBuilder, private userData: AuthServiceService,
     private localStorage: LocalStorageService) {
@@ -34,7 +46,14 @@ export class TimeOffLeaveComponent implements OnInit {
   getleaveRequest() {
 
 
-    this.userData.getUserLeaveRequest().subscribe(res => {
+    this.userData.getUserLeaveRequest(this.pagelength, this.start).subscribe(res => {
+      //pagination start
+      this.POSTS = res.data[0].leaveRequest;
+      console.log(">>>>>>>>>>", res.totalUsers)
+      this.count = res.totalUsers
+      //end
+
+      console.log(res.data[0].leaveRequest.length)
       this.requests = res.data[0].leaveRequest
       this.department = res.data[0].Employment[0].department
       this.usercode = res.data[0].Employment[0].userDefinedCode
@@ -55,12 +74,39 @@ export class TimeOffLeaveComponent implements OnInit {
   //get All leaves
   getleaveDetails() {
     this.userData.getUserLeaveDetail().subscribe(res => {
+
       this.requ = res.data[0]
       console.log(this.requ)
 
     })
   }
 
+  //pagination
+
+  onTableDataChange(event: any) {
+    console.log(event)
+    this.page = event;
+    if (this.page > 1) {
+      this.start = (this.page - 1) * this.pagelength
+      console.log(this.start)
+      this.getleaveRequest();
+    }
+    else {
+      this.start = 0
+
+      this.getleaveRequest();
+    }
+  }
+
+  pageSize(event: any) {
+    console.log(event.target.value)
+    this.pagelength = event.target.value
+    this.tableSize = event.target.value
+    this.page = 1;
+    this.start = 0
+    this.getleaveRequest()
+
+  }
 
   ngOnInit(): void {
   }

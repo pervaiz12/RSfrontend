@@ -84,30 +84,25 @@
                     <label>Employee Type</label>
                     <select formControlName="employType" name="employType" class="form-control">
                         <option value="">select</option>
-
                         <option *ngFor="let e of typeOfEmp" value={{e._id}}>{{e.empType}}</option>
-
                     </select>
                 </div>
                 <div class="col-12">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Role</label>
                         <select formControlName="role" name="role" class="form-control">
-                            <option value="">select</option>
+                            <option value="">Select</option>
                             <option value="user">User</option>
                             <option value="manager">Manager</option>
                             <option value="hr">HR</option>
 
                         </select>
-                        <!-- <input type="role" class="form-control" formControlName="role" placeholder="role"> -->
-
-
                     </div>
                 </div>
             </div>
 
             <div class="row ">
-                <div class="col-12 btn "> <button type="submit" class="btn btn-primary mt-2 mb-2">create</button>
+                <div class="col-12 btn "> <button type="submit" class="btn btn-primary mt-2 mb-2">Create</button>
 
                 </div>
             </div>

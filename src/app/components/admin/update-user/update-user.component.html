@@ -1,0 +1,72 @@
+<div class="content_inner d-flex justify-content-between">
+    <div class="form_section">
+        <form [formGroup]="profileForm" (ngSubmit)="profileUpdate()">
+            <div class="form_tag"> <strong><i class="fa fa-user icon"></i>Personal Information </strong>
+                <hr class="mt-10">
+            </div>
+            <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" formControlName="fname" class="form-control" id="firstname"
+                    placeholder="Enter Firs Name" name="firstname">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" formControlName="lastname" id="lastname"
+                    placeholder="Enter your last name" name="lastname">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" formControlName="email" id="firstname"
+                    placeholder="Enter Firs Name" name="email">
+            </div>
+            <div class="form-group">
+                <label for="username">UserName:</label>
+                <input type="text" class="form-control" formControlName="username" id="fathername"
+                    placeholder="Enter Your username" name="fathername">
+            </div>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" formControlName="title" id="fathername"
+                    placeholder="Enter Your title" name="title">
+            </div>
+            <div class="form-group">
+                <label for="company">Company:</label>
+                <input type="text" class="form-control" formControlName="company" id="fathername"
+                    placeholder="Enter Your company" name="company">
+            </div>
+
+            <div class="form-group">
+                <label>role</label>
+                <select name="role" formControlName="role" for="role" id="role" class="form-control">
+                    <option value="user">user</option>
+                    <option value="manager">manager</option>
+                    <option value="hr">hr</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>empType</label>
+                <select name="empType" formControlName="empType" for="empType" id="empType" class="form-control">
+                    <option value="">-Employee Type-</option>
+                    <option *ngFor="let opt of typeOfEmp" [selected]="opt._id === empType" [value]="opt._id">
+                        {{ opt.empType }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Report To </label>
+                <select name="reportTo" formControlName="reportTo" for="reportTo" id="reportTo" class="form-control">
+                    <option value="">-Report To-</option>
+                    <option *ngFor="let opt of reTo" [selected]="opt._id === reportToName" [value]="opt._id ">
+                        {{ opt.username }}
+                    </option>
+                </select>
+            </div>
+
+            <div><a routerLink="/userslist" class="btn btn-danger">cancel</a>
+                <button type="save" class="btn btn-primary">Update</button>
+            </div>
+
+        </form>
+    </div>
+</div>

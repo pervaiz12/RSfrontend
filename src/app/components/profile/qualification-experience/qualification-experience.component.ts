@@ -10,6 +10,8 @@ import Swal from 'sweetalert2'
   styleUrls: ['./qualification-experience.component.css']
 })
 export class QualificationExperienceComponent implements OnInit {
+  img: any
+  imageArray: any
   // qualifiactionForm
   qualifiactionForm!: FormGroup;
 
@@ -55,6 +57,11 @@ export class QualificationExperienceComponent implements OnInit {
     this.formArray.push(this.addNewExp())
   }
 
+  remove(i:any) {
+    this.formArray.push(this.addNewExp())
+    
+
+  }
   //for new qualifaction
 
   addNewqua() {
@@ -87,7 +94,7 @@ export class QualificationExperienceComponent implements OnInit {
 
   }
   get certificateArray() {
-    return this.qualifiactionForm.get('qualification') as FormArray
+    return this.qualifiactionForm.get('certification') as FormArray
   }
 
   addcertificate() {
@@ -109,5 +116,29 @@ export class QualificationExperienceComponent implements OnInit {
       })
       console.log(res)
     })
+
+    this.qualifiactionForm.reset();
+
+  }
+
+
+  //for upload image
+  upload(event: any) {
+    const file = event.target.files[0];
+    this.img = file;
+    this.uploadData();
+
+  }
+  uploadData() {
+    let formData = new FormData();
+    formData.append('image', this.img);
+    this.userData.fileUpload(formData).subscribe((res) => {
+      console.log(res)
+      this.imageArray = res
+      console.log(this.imageArray.pathArray[0])
+    }, (err) => {
+      console.log(err)
+    })
+
   }
 }

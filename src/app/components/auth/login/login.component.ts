@@ -44,17 +44,20 @@ export class LoginComponent implements OnInit {
     }
     // In services call createProduct
     this.userData.loginUser(data).subscribe((res) => {
-      console.log(res);
+      console.log("refresh token",res);
       this.response = res
       const token = this.response.token
+      const refreshToken = this.response.refreshToken
       console.log(token)
+      console.log("refreshTokenrefreshToken",refreshToken)
+
       if (token) {
         //decode token
         const jwtPayload = JSON.parse(window.atob(this.response.token.split('.')[1]))
 
         console.log(jwtPayload)
         this.localStorage.saveAuthData(jwtPayload);
-        this.cookies.saveAuthData(token, jwtPayload.exp, jwtPayload.username);
+        this.cookies.saveAuthData(token,refreshToken, jwtPayload.exp, jwtPayload.username);
         this.userData.userInformation().subscribe(res => {
           console.log(res.data[0].role)
 
@@ -65,9 +68,13 @@ export class LoginComponent implements OnInit {
 
           } else if (res.data[0].role == "manager") {
             console.log("manager login")
+            window.location.href = "/dashboard";
+
           }
           else if (res.data[0].role == "hr") {
             console.log("hr login")
+            window.location.href = "/dashboard";
+
           } else {
             // this.ngZong.run(() => { this.router.navigateByUrl('dashboard') })
             window.location.href = "/dashboard";

@@ -1,0 +1,55 @@
+<div class="container">
+  <h1 class="text-center mt-5">Users List</h1>
+  <div class="search_box d-flex justify-content-between py-5 ">
+    
+    <select class="selectpicker" data-style="btn-info" (change)="pageSize($event)">
+      <option *ngFor="let e of tableSizes" value={{e}}>{{e}}</option>
+
+    </select>
+
+    <input #box (keyup)="onKey(box.value)" type="text" placeholder="Search..">
+
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>UserName</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Title</th>
+        <th colspan="2">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="
+          let post of POSTS?.data
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        ">
+        <td>{{ i+1 }}</td>
+        <td>{{ post.username }}</td>
+        <td>{{ post.email }}</td>
+        <td>{{post.role}}</td>
+        <td>{{ post.title }}</td>
+        <td><button routerLink="/update_user/{{post._id}}"class="btn-primary">Edit</button></td>
+
+      </tr>
+    </tbody>
+    <tbody *ngIf="POSTS?.data?.length == 0">
+      <tr>
+        <td colspan="3" class="no-data-available">No data!</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+  </div>
+</div>

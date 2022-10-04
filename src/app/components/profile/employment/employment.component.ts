@@ -100,7 +100,7 @@ export class EmploymentComponent implements OnInit {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Your work has been saved',
+        title: 'Your Information has been Saved Successfully',
         showConfirmButton: true,
         timer: 5000
       })

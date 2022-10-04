@@ -1,0 +1,31 @@
+<div class="container-fluid mt-4">
+
+    <table datatable [dtOptions]="dtOptions" class="row-border col-md-12 hover ">
+        <thead>
+            <tr>
+
+                <th> #</th>
+                <th>username</th>
+                <th>Department</th>
+
+                <th>Email</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="users?.length != 0">
+            
+            <tr *ngFor="let user of users?.data let i = index ">
+                <td>{{i+1}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user?.Employment[0]?.department}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="users?.length == 0">
+            <tr>
+                <td colspan="3" class="no-data-available">No data!</td>
+            </tr>
+        </tbody>
+    
+    </table>
+</div>

@@ -5,6 +5,7 @@ import { AuthServiceService } from './auth-service.service';
   providedIn: 'root'
 })
 export class LocalStorageService {
+  getItem: any;
 
   constructor(private userData: AuthServiceService,) { }
 

@@ -21,10 +21,10 @@
             <a routerLink="/employment" routerLinkActive="active">Employment</a>
           </li>
           <li>
-            <a routerLink="/userInformation" routerLinkActive="active">User Information</a>
+            <a routerLink="/qualification" routerLinkActive="active">Qualification & Experience</a>
           </li>
           <li>
-            <a routerLink="/qualification" routerLinkActive="active">Qualification && Experience</a>
+            <a routerLink="/approvedleave" routerLinkActive="active">Leave Requests</a>
           </li>
         </ul>
       </li>
@@ -38,14 +38,41 @@
         </ul>
       </li>
 
+      <li *ngIf="username=='admin'" class="active">
+        <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
+        <ul class="collapse list-unstyled" id="userSubmenu">
+          <li *ngIf="username=='admin'">
+            <a routerLink="/approvedleave" routerLinkActive="active">Leave Requests</a>
+          </li>
+          <li *ngIf="username=='admin'">
+            <a routerLink="/create" routerLinkActive="active">Create User</a>
+          </li>
+          <!-- userslist -->
+          <li *ngIf="username=='admin'">
+            <a routerLink="/userslist" routerLinkActive="active">User List</a>
+          </li>
+
+          <!-- <li *ngIf="username=='admin'">
+            <a routerLink="/listuser" routerLinkActive="active">User List</a>
+          </li> -->
+        </ul>
+      </li>
 
 
-      <li *ngIf="username=='admin'">
-        <a routerLink="/approvedleave" routerLinkActive="active">Leave Requests</a>
+      <li class="active">
+        <a href="#friend" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Friend</a>
+        <ul class="collapse list-unstyled" id="friend">
+          <li>
+            <a routerLink="/friends" routerLinkActive="active">All Users</a>
+          </li>
+          <li>
+            <a routerLink="/friendRequest">Friend Requests</a>
+          </li>
+        </ul>
       </li>
-      <li *ngIf="username=='admin'">
-        <a routerLink="/create" routerLinkActive="active">Create User</a>
-      </li>
+
+
+
     </ul>
   </nav>
 </div>

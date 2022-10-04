@@ -3,14 +3,14 @@
 
         <div class="form_tag"> <strong><i class="fa fa-user icon"></i>Personal Experience </strong>
             <hr class="mt-10">
-          </div>
+        </div>
         <div class="row mt-5">
             <div formArrayName="experience">
                 <ng-container *ngFor="let skill of formArray['controls'] ;index as i" [formGroupName]="i">
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">companyName</label>
+                                <label for="exampleInputEmail1">Company Name</label>
                                 <input type="companyName" id="companyName{{i}}" class="form-control"
                                     formControlName="companyName" placeholder="Enter Name">
 
@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">startDate</label>
+                                <label for="exampleInputEmail1">Start Date</label>
                                 <input type="date" id="startDate{{i}}" class="form-control" formControlName="startDate"
                                     placeholder="Enter Class">
                             </div>
@@ -41,42 +41,46 @@
                         </div>
 
                     </div>
+                    <div *ngIf="i >0" class="col-2 py-2">
+                        <button type="button" (click)="remove(i)" class="btn  btn-danger mt-2">remove</button>
+
+                    </div>
                 </ng-container>
 
-                <button type="button" (click)="addExprience()" class="btn  btn-primary mt-2">+ add</button>
+                <button type="button" (click)="addExprience()" class="btn  btn-primary mt-2">+ Add</button>
             </div>
         </div>
 
         <div class="form_tag mt-5"> <strong><i class="fa fa-user icon"></i> Qualification </strong>
             <hr class="mt-10">
-          </div>
+        </div>
 
         <!-- for qualification-->
 
 
         <div class="row mt-5">
             <div formArrayName="qualification">
-                <ng-container *ngFor="let skill of formArray['controls'] ;index as i" [formGroupName]="i">
+                <ng-container *ngFor="let skill of qulaifactionArray['controls'] ;index as i" [formGroupName]="i">
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">School Name</label>
                                 <input type="schoolName" id="schoolName{{i}}" class="form-control"
-                                    formControlName="schoolName" placeholder="Enter Name">
+                                    formControlName="schoolName" placeholder="EnterSchool Name">
 
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">resultDeclar</label>
+                                <label for="exampleInputEmail1">Result Declar Date</label>
                                 <input type="date" id="resultDeclar{{i}}" class="form-control"
-                                    formControlName="resultDeclar" placeholder="Enter Class">
+                                    formControlName="resultDeclar" placeholder="Enter resukt Declar Date">
                             </div>
                         </div>
 
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="cgp">cgp</label>
+                                <label for="cgp">CGP</label>
                                 <input type="text" id="cgp{{i}}" class="form-control" formControlName="cgp"
                                     placeholder="Enter cgp">
                             </div>
@@ -100,13 +104,13 @@
 
         <div class="form_tag mt-5"> <strong><i class="fa fa-user icon"></i>Certificate </strong>
             <hr class="mt-10">
-          </div>
+        </div>
         <!-- for certification-->
 
 
         <div class="row mt-5">
             <div formArrayName="certification">
-                <ng-container *ngFor="let skill of formArray['controls'] ;index as i" [formGroupName]="i">
+                <ng-container *ngFor="let skill of certificateArray['controls'] ;index as i" [formGroupName]="i">
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group">
@@ -118,7 +122,7 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">certificateImage</label>
+                                <label for="exampleInputEmail1">Certificate Image</label>
                                 <input type="text" id="certificateImage{{i}}" class="form-control"
                                     formControlName="certificateImage" placeholder="Enter Class">
                             </div>

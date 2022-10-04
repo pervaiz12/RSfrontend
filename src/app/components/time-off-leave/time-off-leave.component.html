@@ -1,36 +1,33 @@
 <div>
-  <a class="btn btn-sm btn-success" routerLink="/createLeaveRequest" routerLinkActive="active">create</a>
+  <a class="btn btn-sm btn-success" routerLink="/createLeaveRequest" routerLinkActive="active">Create</a>
 
 </div>
 
 <table class="table mt-5">
   <thead>
-      <tr>
-          <th scope="col">Leave Type</th>
-          <th scope="col">Balance</th>
-          <th scope="col">Availed</th>
-          <th scope="col">Available</th>
-          <th scope="col">pending</th>
+    <tr>
+      <th scope="col">Leave Type</th>
+      <th scope="col">Total Leaves</th>
+      <th scope="col">Availed</th>
+      <th scope="col">Available</th>
+      <th scope="col">Pending</th>
 
-      </tr>
+    </tr>
   </thead>
   <tbody>
-      <!-- <tr *ngFor="let e of posts?.data "> -->
-      <tr>
-
-          <td>{{requ?.leavetype}}</td>
-
-          <td>{{requ?.balance}}</td>
-          <td>{{requ?.availed}}</td>
-          <td>{{requ?.available}}</td>
-          <td>{{requ?.pending}}</td>
+    <tr>
+      <td>{{requ?.leavetype}}</td>
+      <td>{{requ?.balance}}</td>
+      <td>{{requ?.availed}}</td>
+      <td>{{requ?.available}}</td>
+      <td>{{requ?.pending}}</td>
 
 
-      </tr>
+    </tr>
 
   </tbody>
 </table>
-
+<!-- 
 <table class="table mt-5">
   <thead>
     <tr>
@@ -47,7 +44,6 @@
     </tr>
   </thead>
   <tbody>
-    <!-- <tr *ngFor="let e of posts?.data "> -->
     <tr *ngFor=" let e of requests  let i = index">
 
       <th scope="row">{{i+1}}</th>
@@ -65,4 +61,73 @@
     </tr>
 
   </tbody>
-</table>
+</table> -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="search_box d-flex justify-content-between py-5 ">
+
+    <select class="selectpicker" data-style="btn-info" (change)="pageSize($event)">
+      <option *ngFor="let e of tableSizes" value={{e}}>{{e}}</option>
+
+    </select>
+
+
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Employee</th>
+        <th scope="col">Department</th>
+        <th scope="col">Leave Type</th>
+        <!-- <th scope="col">Next Request</th> -->
+        <th scope="col">Leave Count</th>
+        <th scope="col">Dates</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="
+          let post of POSTS
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        ">
+        <td>{{usercode}}</td>
+        <td>{{username}}</td>
+        <td> {{department}} </td>
+        <td>{{post?.leaveType}}</td>
+        <!-- <td>{{lineManager}}</td> -->
+        <td>{{post?.count}}</td>
+        <td>{{post?.createdAt| date:'dd-MM-yyyy '}}</td>
+        <td>{{post?.status}}</td>
+
+      </tr>
+    </tbody>
+    <tbody *ngIf="POSTS?.data?.length == 0">
+      <tr>
+        <td colspan="8" class="no-data-available">No data!</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+  </div>
+</div>

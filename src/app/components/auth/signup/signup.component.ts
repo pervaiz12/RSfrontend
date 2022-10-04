@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { CookiesService } from 'src/app/services/cookies.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -38,7 +39,7 @@ export class SignupComponent implements OnInit {
       company: ['', []],
       role: ['', []],
       employType: ['', []],
-     
+
 
 
     })
@@ -57,31 +58,37 @@ export class SignupComponent implements OnInit {
       company: this.signupForm.value.company,
       role: this.signupForm.value.role,
       email: this.signupForm.value.email,
-      emplType:this.signupForm.value.employType
-
+      emplType: this.signupForm.value.employType
 
     }
 
     // In services call createProduct
     this.userData.createUser(data).subscribe((res) => {
       console.log(res);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'User has been Created Successfully',
+        showConfirmButton: true,
+        timer: 5000
+      })
       this.response = res
-      const token = this.response.token
-      console.log(token)
-      if (token) {
+      // const token = this.response?.token
+      // console.log(token)
+      // if (token) {
 
-        const jwtPayload = JSON.parse(window.atob(this.response.token.split('.')[1]))
+      //   const jwtPayload = JSON.parse(window.atob(this.response.token.split('.')[1]))
 
-        console.log(jwtPayload)
-        this.localStorage.saveAuthData(jwtPayload.userID);
-        this.cookies.saveAuthData(token, jwtPayload.exp, jwtPayload.username)
-        this.ngZong.run(() => { this.router.navigateByUrl('dashboard') })
+      //   console.log(jwtPayload)
+      //   this.localStorage.saveAuthData(jwtPayload.userID);
+      //   this.cookies.saveAuthData(token, jwtPayload.exp, jwtPayload.username)
+      //   this.ngZong.run(() => { this.router.navigateByUrl('admindashboard') })
 
 
 
-      } else {
-        this.ngZong.run(() => { this.router.navigateByUrl('login') })
-      }
+      // } else {
+        this.ngZong.run(() => { this.router.navigateByUrl('userslist') })
+      // }
     })
 
 
@@ -94,7 +101,6 @@ export class SignupComponent implements OnInit {
       console.log(list?.data)
       this.typeOfEmp = list?.data
       console.log(this.typeOfEmp)
-
 
     })
 

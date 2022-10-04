@@ -1,0 +1,28 @@
+<div infinite-scroll [infiniteScrollDistance]="distance" [infiniteScrollThrottle]="throttle" (scrolled)="onScroll()">
+    <button  *ngIf="requestTotal?.length >0" class="btn btn-sm btn-success" (click)="clearNotification()">Clear Notifications</button>
+
+    <div *ngFor="let post of requestTotal">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <div class="card">
+                        <div class="card-horizontal">
+                            <div class="img-square-wrapper py-2 ml-2">
+                                <img src="http://localhost:5000/{{post.sender_id?.userProfile[0]?.img.profile_pic.original}}"
+                                    class="img-fluid rounded-circle border border-white border-1" style="width: 100px;">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{post.sender_id?.username}}</h4>
+                                <p class="card-text">{{post.message}}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">{{post.createdAt | date:'dd-MM-yyyy '}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -23,6 +23,30 @@ import { HeaderComponent } from './navbar/header/header.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { LeaveRequestComponent } from './components/leave-request/leave-request.component';
 import { CreateLeaveRequestComponent } from './components/create-leave-request/create-leave-request.component'
+import { DataTablesModule } from 'angular-datatables';
+import { ListUserComponent } from './components/admin/list-user/list-user.component';
+import { UsersListComponent } from './components/admin/users-list/users-list.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UpdateUserComponent } from './components/admin/update-user/update-user.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { FrinedComponent } from './components/userfriend/frined/frined.component';
+import { FriendRequestsComponent } from './components/userfriend/friend-requests/friend-requests.component';
+import { MessageComponent } from './components/userfriend/message/message.component';
+import { AllFriendComponent } from './components/userfriend/all-friend/all-friend.component';
+
+
+
+// import {MatInputModule} from '@angular/material/input';
+
+//  import {MatPaginatorModule} from '@angular/material/paginator';
+
+
+
+
+
+
+
 
 
 
@@ -44,7 +68,15 @@ import { CreateLeaveRequestComponent } from './components/create-leave-request/c
     HeaderComponent,
     AdminDashboardComponent,
     LeaveRequestComponent,
-    CreateLeaveRequestComponent
+    CreateLeaveRequestComponent,
+    ListUserComponent,
+    UsersListComponent,
+    UpdateUserComponent,
+    NotificationComponent,
+    FrinedComponent,
+    FriendRequestsComponent,
+    MessageComponent,
+    AllFriendComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +84,18 @@ import { CreateLeaveRequestComponent } from './components/create-leave-request/c
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    // MatDatepickerModule
+    DataTablesModule,
+    NgxPaginationModule,
+    InfiniteScrollModule,
+
+   
+
+    // MatAutocompleteModule,
+    // MatPaginatorModule,
+    // MatAutocompleteModule
+    // MatSliderModule
+
+
   ],
   providers: [CookieService,
     {

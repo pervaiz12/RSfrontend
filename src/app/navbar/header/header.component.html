@@ -3,15 +3,59 @@
     <button type="button" id="sidebarCollapse" class="btn btn-info">
       <i class="fas fa-align-left"></i>
     </button>
-    <div class="dropdown">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        {{username}}
-      </button>
-      <div class="dropdown-menu">
-        <li>
-          <a class="dropdown-item" routerLink="/logout" routerLinkActive="active">Logout</a>
-        </li>
+
+
+
+    <!-- <a *ngIf='message === "per"' href="javascript:void(0)"> {{notityCount}} <button routerLink="/notification/{{uId}}"
+        class="btn-primary">notification</button>
+
+    </a>
+    <a *ngIf='message != "per"' href="javascript:void(0)"> {{message}} <button routerLink="/notification/{{uId}}"
+        class="btn-primary">notification</button>
+
+    </a> -->
+    <div class="header_right">
+      <div class="notification_section">
+        <div class="icon" id="bell"> <i class="far fa-bell"></i><span *ngIf='message === "per"'
+            class="count">{{notityCount}}</span> </div>
+        <div class="notification" id="box">
+          <h2 *ngIf='message === "per"' class="heading">Notifications - <span>{{notityCount}}</span></h2>
+          <div *ngFor="
+          let post of totalNotifaction?.data" class="notification-item">
+            <img src="http://localhost:5000/{{post.sender_id?.userProfile[0]?.img.profile_pic.original}}">
+
+            <div class="text">
+              <h4>{{post.sender_id.username }}</h4>
+              <p>{{post.message}}</p>
+            </div>
+          </div>
+          <button routerLink="/notification/{{uId}}" class="btn btn-primary view_all">View All</button>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          {{username}}
+        </button>
+        <div class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" routerLink="/logout" routerLinkActive="active">Logout</a>
+          </li>
+          <li>
+          </li>
+        </div>
+
       </div>
     </div>
+
+
+
+
+
+
   </div>
 </nav>
+
+
+<script>
+
+</script>

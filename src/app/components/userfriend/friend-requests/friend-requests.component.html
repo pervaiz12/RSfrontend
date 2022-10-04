@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-3"> <button routerLink="/allfriends" class="btn btn-success">Show All Friends</button>
+    </div>
+    <div class="row">
+        <div *ngFor="let user of USERS?.result let i = index " class="col-md-8">
+            <div class="people-nearby">
+                <div class="nearby-user">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2">
+                            <img class="img-fluid rounded-circle border border-white border-1" style="width: 130px;"
+                                src="http://localhost:5000/{{user?.requester?.userProfile[0]?.img?.profile_pic?.original}}">
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <h5><a class="profile-link">{{user.requester.username}}</a></h5>
+                            <p>Software Engineer</p>
+                        </div>
+
+                       
+                            <div *ngIf="user.status===2" class="col-md-3 col-sm-3">
+                                <button class="btn btn-primary pull-right "
+                                    (click)="acceptrequect(user.requester._id)">Accept
+                                    Request</button>
+                            </div>
+                            <div *ngIf="user.status===2" class="col-md-3 col-sm-3">
+                                <button class="btn btn-danger pull-right "
+                                    (click)="rejectrequect(user.requester._id)">Reject
+                                    Request</button>
+                            </div>
+                       
+                        <div *ngIf="user.status===1" class="col-md-3 col-sm-3">
+                            <button class="btn btn-primary pull-right ">
+                                pending</button>
+                        </div>
+                        <div *ngIf="user.status===3" class="col-md-3 col-sm-3">
+                            <button routerLink="/message/{{user.requester._id}}" class="btn btn-primary pull-right ">
+                                message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

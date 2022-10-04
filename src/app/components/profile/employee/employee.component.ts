@@ -16,9 +16,13 @@ export class EmployeeComponent implements OnInit {
 
   profileForm!: FormGroup;
   ngsubmit: Boolean = false
-  userName:any
-  title:any
-  company:any
+  userName: any
+  title: any
+  company: any
+  img: any
+  imageArray: any
+  respon: any
+  imageSelected: boolean = false
 
   constructor(private fb: FormBuilder, private userData: AuthServiceService,
     private localStorage: LocalStorageService,
@@ -70,23 +74,21 @@ export class EmployeeComponent implements OnInit {
 
     console.log(getId)
     //get data  by id 
-
     this.userData.getUser(getId).subscribe(res => {
+      this.respon = res.data[0]
       var response = res.data[0]
+      console.log("new daatatta", response?.userProfile[0]?.img.profile_pic.original)
+
       var profileResponse = response?.userProfile[0]
-     this.userName=response.username
-     this.title=response.title
-     this.company=response.company
+      this.userName = response.username
+      this.title = response.title
+      this.company = response.company
       var quickContact = response?.quickContact
       var IdentityCard = response?.IdentityCard
       var Driving = response?.Driving
       console.log(response.userProfile[0]?.maritalStatus)
-
       console.log(profileResponse?.gender)
-
       this.profileForm = this.fb.group({
-
-
         username: [response['username']],
         email: [response['email'],],
         fname: [response['fname'],],
@@ -102,17 +104,11 @@ export class EmployeeComponent implements OnInit {
         nationality: [profileResponse?.['nationality']],
         bloodgroup: [profileResponse?.['bloodgroup']],
         dob: [profileResponse?.['dob']],
-
         licenseNo: [Driving?.['licenseNo']],
         liceseExpire: [Driving?.['liceseExpire']],
-
-
-
-
         lineNumber: [quickContact?.['lineNumber']],
         quickEmail: [quickContact?.['email']],
         mobile: [quickContact?.['mobile']],
-
         CNIC: [IdentityCard?.['CNIC']],
         CNICExpire: [IdentityCard?.['CNICExpire']],
 
@@ -127,6 +123,7 @@ export class EmployeeComponent implements OnInit {
 
     let data = {
       lastname: this.profileForm.value.lastname,
+      attachment: this.imageArray?.pathArray,
       username: this.profileForm.value.username,
       fname: this.profileForm.value.fname,
       title: this.profileForm.value.title,
@@ -148,14 +145,13 @@ export class EmployeeComponent implements OnInit {
       licenseNo: this.profileForm.value.licenseNo,
       liceseExpire: this.profileForm.value.liceseExpire
 
-
     }
     console.log(data)
     this.userData.userProfile(data).subscribe((res) => {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Your Data has been updated',
+        title: 'Your Data has been Updated Successfully',
         showConfirmButton: true,
         timer: 5000
       })
@@ -163,6 +159,42 @@ export class EmployeeComponent implements OnInit {
     })
     console.log(this.profileForm.value)
     console.log("profileUpdated ")
+  }
+
+
+  //upload Image 
+  upload(event: any) {
+    const file = event.target.files[0];
+    console.log(file)
+
+
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      //me.modelvalue = reader.result;
+      console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+
+
+    this.img = file;
+    this.uploadData();
+
+  }
+  uploadData() {
+    let formData = new FormData();
+    formData.append('image', this.img);
+    this.userData.fileUpload(formData).subscribe((res) => {
+      console.log(res)
+      this.imageArray = res
+      this.imageSelected = true
+      console.log(this.imageArray.pathArray[0])
+    }, (err) => {
+      console.log(err)
+    })
+
   }
 
 }

@@ -147,10 +147,15 @@
       <div class="form_tag"> <strong><i class="fa fa-user icon"></i>Personal Information </strong>
         <hr class="mt-10">
       </div>
+
       <div class="form-group">
-        <label for="fname">First Name:</label>
-        <input type="text" formControlName="fname" readonly class="form-control" id="firstname" placeholder="Enter Firs Name"
-          name="firstname">
+        <label for="attachment">update profile</label>
+        <input id="file-input" #imageInput type="file" (change)="upload($event)" accept="image/*">
+      </div>
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" formControlName="fname" readonly class="form-control" id="firstname"
+          placeholder="Enter Firs Name" name="firstname">
       </div>
       <div class="form-group">
         <label for="lastname">Last Name</label>
@@ -158,22 +163,22 @@
           placeholder="Enter your last name" name="lastname">
       </div>
       <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="text" class="form-control" formControlName="email" readonly id="firstname" placeholder="Enter Firs Name"
-          name="email">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" formControlName="email" readonly id="firstname"
+          placeholder="Enter Firs Name" name="email">
       </div>
       <div class="form-group">
-        <label for="username">UserName:</label>
+        <label for="username">UserName</label>
         <input type="text" class="form-control" readonly formControlName="username" id="fathername"
           placeholder="Enter Your username" name="fathername">
       </div>
       <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" class="form-control" formControlName="title" readonly id="fathername" placeholder="Enter Your title"
-          name="title">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" formControlName="title" readonly id="fathername"
+          placeholder="Enter Your title" name="title">
       </div>
       <div class="form-group">
-        <label for="company">Company:</label>
+        <label for="company">Company</label>
         <input type="text" class="form-control" readonly formControlName="company" id="fathername"
           placeholder="Enter Your company" name="company">
       </div>
@@ -190,9 +195,9 @@
         <hr class="mt-10">
       </div>
       <div class="form-group">
-        <label for="fatherName">Father Name:</label>
+        <label for="fatherName">Father Name</label>
         <input type="text" formControlName="fatherName" class="form-control" id="firstname"
-          placeholder="Enter Firs Name" name="firstname">
+          placeholder="Enter Father Name" name="firstname">
       </div>
 
       <div class="form-group">
@@ -206,7 +211,7 @@
 
       <div class="select_fields">
         <div class="form-group">
-          <label for="bloodgroup">bloodgroup</label>
+          <label for="bloodgroup">Blood Group</label>
           <select name="bloodgroup" id="relgion" formControlName="bloodgroup">
             <option value="">Select bloodgroup</option>
             <option value="O+">O+</option>
@@ -214,7 +219,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="salutation">salutation</label>
+          <label for="salutation">Salutation</label>
           <select name="salutation" formControlName="salutation" id="nationality">
             <option value="">Select salutation</option>
             <option value="Mr">Mr</option>
@@ -238,9 +243,9 @@
       </div>
       <div class="select_fields">
         <div class="form-group">
-          <label for="relgion">Relgion</label>
+          <label for="relgion">Religion</label>
           <select name="relgion" id="relgion" formControlName="religion">
-            <option value="">Select Relgion</option>
+            <option value="">Select Religion</option>
             <option value="islam">Islam</option>
             <option value="hinduism">Hinduism</option>
           </select>
@@ -262,17 +267,17 @@
         <hr class="mt-10">
       </div>
       <div class="form-group">
-        <label for="lineNumber">lineNumber:</label>
+        <label for="lineNumber">Line Number</label>
         <input type="text" formControlName="lineNumber" class="form-control" id="firstname"
           placeholder="Enter LineNumber" name="lineNumber">
       </div>
       <div class="form-group">
-        <label for="quickEmail">quickEmail</label>
+        <label for="quickEmail">Email</label>
         <input type="text" class="form-control" formControlName="quickEmail" id="quickEmail"
-          placeholder="Enter your last name" name="quickEmail">
+          placeholder="Enter your Email" name="quickEmail">
       </div>
       <div class="form-group">
-        <label for="mobile">mobile:</label>
+        <label for="mobile">Mobile</label>
         <input type="text" class="form-control" formControlName="mobile" id="firstname" placeholder="Enter Mobile"
           name="mobile">
       </div>
@@ -283,14 +288,14 @@
         <hr class="mt-10">
       </div>
       <div class="form-group">
-        <label for="CNIC">CNIC:</label>
+        <label for="CNIC">CNIC</label>
         <input type="text" formControlName="CNIC" class="form-control" id="firstname" placeholder="Enter CNIC"
           name="CNIC">
       </div>
       <div class="form-group">
-        <label for="CNICExpire">CNICExpire</label>
-        <input type="date" class="form-control" formControlName="CNICExpire" id="CNICExpire"
-          placeholder="Enter your last name" name="CNICExpire">
+        <label for="CNICExpire">CNIC Expiry</label>
+        <input type="date" class="form-control" formControlName="CNICExpire" id="CNIC Expiry"
+          placeholder="Enter Expiry " name="CNICExpire">
       </div>
 
 
@@ -298,12 +303,12 @@
         <hr class="mt-10">
       </div>
       <div class="form-group">
-        <label for="licenseNo">licenseNo:</label>
+        <label for="licenseNo">License No</label>
         <input type="text" formControlName="licenseNo" class="form-control" id="firstname" placeholder="Enter licenseNo"
           name="licenseNo">
       </div>
       <div class="form-group">
-        <label for="liceseExpire">liceseExpire</label>
+        <label for="liceseExpire">Licese Expiry</label>
         <input type="date" class="form-control" formControlName="liceseExpire" id="liceseExpire"
           placeholder="Enter your last name" name="liceseExpire">
       </div>
@@ -314,8 +319,12 @@
   <div class="profile_card">
     <div class="card">
       <div class="profile_image">
-        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt="John">
+        <!-- <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="John"> -->
+        <img *ngIf="imageArray?.pathArray" src="http://localhost:5000/{{imageArray?.pathArray[3]}}" width="80"
+         >
+        <img *ngIf="!imageArray?.pathArray" src="http://localhost:5000/{{respon?.userProfile[0]?.img.profile_pic.original}}">
+
       </div>
       <h1>{{userName}}</h1>
       <p class="title">{{title}}</p>

@@ -1,4 +1,4 @@
-<table class="table mt-5">
+<!-- <table class="table mt-5">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -30,4 +30,67 @@
         </tr>
 
     </tbody>
-</table>
+</table> -->
+
+
+
+
+<div class="container">
+    <div class="search_box d-flex justify-content-between py-5 ">
+
+        <select class="selectpicker" data-style="btn-info" (change)="pageSize($event)">
+            <option *ngFor="let e of tableSizes" value={{e}}>{{e}}</option>
+
+        </select>
+
+
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>UserName</th>
+                <th>LeaveType</th>
+                <th>Reason</th>
+                <th>Attatchment</th>
+                <th>Leave</th>
+                <th>Date</th>
+                <th colspan="2">Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="
+            let post of POSTS?.data
+              | paginate
+                : {
+                    itemsPerPage: tableSize,
+                    currentPage: page,
+                    totalItems: count
+                  };
+            let i = index
+          ">
+                <td>{{ i+1 }}</td>
+                <td>{{ post?.user_id.username }}</td>
+                <td>{{post?.leaveType}}</td>
+                <td>{{post?.reason}}</td>
+                <td *ngIf="post.attachment"> <img src="http://localhost:5000/{{ post?.attachment}}" width="80"
+                        alt="sorry"></td>
+                <td *ngIf="!post.attachment"></td>
+                <td>{{post?.count}}</td>
+                <td>{{post?.createdAt| date:'dd-MM-yyyy '}}</td>
+                <td> <button class="btn btn-sm btn-success" (click)="approved(post._id)">Approve</button></td>
+                <td> <button class="btn btn-sm btn-danger" (click)="reject(post._id)">Reject</button></td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="POSTS?.data?.length == 0">
+            <tr>
+                <td colspan="8" class="no-data-available">No data!</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>
+</div>

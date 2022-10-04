@@ -7,41 +7,68 @@
             <div class="form-group">
                 <label>Leave Type</label>
                 <select formControlName="leaveType" name="gender" class="form-control">
-                    <option value="probation leave">probation leave</option>
+                    <option value="probation leave">Probation Leave</option>
                 </select>
+                <div>
+                    <small *ngIf="leaveRequestForm.get('leaveType')?.invalid && ngsubmit 
+                               ">Select Leave Type</small>
+                </div>
             </div>
             <div class="form-check">
-                <input class="form-check-input" formControlName="short" type="checkbox" value="" id="short">
+                <input class="form-check-input" (ngModelChange)="shortleave('start', $event)" formControlName="short" type="checkbox" value="" id="short">
                 <label class="form-check-label" for="short">
                     short
                 </label>
+
             </div>
             <div class="form-group">
-                <label for="startDate">Start Date:</label>
-                <input type="date"  class="form-control" id="startDate" (ngModelChange)="setDate('start', $event)" placeholder="Enter Firs Name" name="startDate"
-                    formControlName="startDate">
+                <label for="count">Total Leaves</label>
+                <input type="number" class="form-control" formControlName="Totalleave" id="count"
+                    placeholder="Enter Your count" [(ngModel)]="totalLeave" name="count" readonly>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" class="form-control" id="startDate" (ngModelChange)="setDate('start', $event)"
+                    placeholder="Enter Firs Name" name="startDate" formControlName="startDate">
+                <div>
+                    <small *ngIf="leaveRequestForm.get('startDate')?.invalid && ngsubmit 
+                               ">Select Start Date</small>
+                </div>
             </div>
             <div class="form-group">
                 <label for="endDate">End Date</label>
                 <input type="date" class="form-control" id="endDate" formControlName="endDate"
                     placeholder="Enter your last name" name="endDate" (ngModelChange)="endDate('end', $event)">
+                <div>
+                    <small *ngIf="leaveRequestForm.get('endDate')?.invalid && ngsubmit 
+                           ">Select End Date</small>
+                </div>
+                <div>
+                    <small *ngIf="invalidLeave 
+                           ">invalid Selected Date</small>
+                </div>
+                <!-- invalidLeave -->
             </div>
             <div class="form-group">
-                <label for="count">count:</label>
+                <label for="count">Count</label>
                 <input type="number" class="form-control" formControlName="count" id="count"
-                    placeholder="Enter Your count" name="count">
+                    placeholder="Enter Your count" [(ngModel)]="tcount" name="count" readonly>
             </div>
             <div class="form-group">
-                <label for="totalCount">Total Count:</label>
+                <label for="totalCount">Total Count</label>
                 <input type="number" class="form-control" formControlName="totalCount" id="totalCount"
-                    placeholder="Enter Your total count" name="totalCount">
+                    placeholder="Enter Your total count" name="totalCount" [(ngModel)]="tcount" readonly>
             </div>
             <div class="form-outline mb-4">
                 <label for="reason " class="form-label" for="textAreaExample6">Reason:</label>
                 <textarea formControlName="reason" class="form-control" id="textAreaExample6" rows="3"></textarea>
+                <div>
+                    <small *ngIf="leaveRequestForm.get('reason')?.invalid && ngsubmit 
+                           ">Reason is required</small>
+                </div>
             </div>
             <div class="form-group">
-                <label for="attachment">Attachment:</label>
+                <label for="attachment">Attachment</label>
                 <!-- <input type="text" class="form-control" id="attachment" formControlName="attachment"
                     placeholder="Enter Attachment" name="attachment"> -->
                 <input id="file-input" #imageInput type="file" (change)="upload($event)" formControlName="attachment"
@@ -64,7 +91,7 @@
 </div>
 <script type="text/javascript">
 
-    $('.datepicker').datepicker({ 
+    $('.datepicker').datepicker({
         startDate: new Date()
     });
-    </script>
+</script>

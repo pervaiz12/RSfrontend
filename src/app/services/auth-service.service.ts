@@ -34,6 +34,14 @@ export class AuthServiceService {
     let API_URL = `${this.REST_API}/api/user/userprofile`;
     return this.httpClient.post(API_URL, data)
   }
+
+
+  UpdateuserProfile(data: any) {
+    let API_URL = `${this.REST_API}/api/user/Updateuserprofile`;
+    return this.httpClient.post(API_URL, data)
+  }
+
+  // UpdateuserProfile
   //userQualification
 
   userQualification(data: any) {
@@ -85,9 +93,6 @@ export class AuthServiceService {
     return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
       return res || {}
     }))
-
-    // return this.httpClient.get("http://localhost:5000/api/user/approved", +queryParams)
-
   }
 
 
@@ -106,17 +111,10 @@ export class AuthServiceService {
 
   }
 
-  // allrequests
-
-  allrequests(): Observable<any> {
-    let API_URL = `${this.REST_API}/api/user/allrequests`;
-    return this.httpClient.get(API_URL).pipe(map((res: any) => {
-      return res || {}
-    }))
-  }
 
 
-  //get employee type list
+
+  //get employee type list getReportToMember
   getEmpType(): Observable<any> {
     let API_URL = `${this.REST_API}/api/user/emptype`;
     return this.httpClient.get(API_URL).pipe(map((res: any) => {
@@ -124,14 +122,25 @@ export class AuthServiceService {
     }))
   }
 
-  // getUserLeaveRequest
-  getUserLeaveRequest(): Observable<any> {
-
-    let API_URL = `${this.REST_API}/api/user/userLeaveRequest`;
+  getReportToMember(): Observable<any> {
+    let API_URL = `${this.REST_API}/api/user/getReportToMember`;
     return this.httpClient.get(API_URL).pipe(map((res: any) => {
       return res || {}
     }))
   }
+
+  //get Report to  type list getReportTo
+  getReportTo(id: any): Observable<any> {
+    const queryParams = `?id=${id}`;
+    console.log(">>>>>>>>>>>>>>>", queryParams)
+    let API_URL = `${this.REST_API}/api/user/getReportTo`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+
+
 
   // userInformation
 
@@ -143,14 +152,7 @@ export class AuthServiceService {
       return res || {}
     }))
   }
-  // getUserLeaveDetail
-  getUserLeaveDetail(): Observable<any> {
 
-    let API_URL = `${this.REST_API}/api/user/userLeaveDetail`;
-    return this.httpClient.get(API_URL).pipe(map((res: any) => {
-      return res || {}
-    }))
-  }
 
 
   getAllManagers(): Observable<any> {
@@ -192,6 +194,161 @@ export class AuthServiceService {
   fileUpload(formData: any) {
     let API_URL = `${this.REST_API}/api/user/imageUpload`;
     return this.httpClient.post(API_URL, formData)
+  }
+
+
+  /// by using dataTable
+  getusers(pagesize: any,) {
+    console.log(pagesize.length)
+    const queryParams = `?draw=${pagesize.draw}&start=${pagesize.start}&length=${pagesize.length}&ordercolumn=${pagesize.order[0].column}&search=${pagesize.search['value']}&columns=${pagesize.columns}&orderdir=${pagesize.order[0].dir}`;
+    let API_URL = `${this.REST_API}/api/user/GetUsersData`;
+
+    return this.httpClient.get(API_URL + queryParams);
+  }
+
+
+
+  getAllUsers(page: any, start: any, search: any) {
+    console.log(search)
+
+    // &search=${pagesize.search['value']}
+    let API_URL = `${this.REST_API}/api/user/getAllUsers`;
+    const queryParams = `?start=${start}&length=${page}&search=${search}`;
+    return this.httpClient.get(API_URL + queryParams);
+  }
+
+
+  // allrequests
+
+  allrequests(page: any, start: any): Observable<any> {
+    const queryParams = `?start=${start}&length=${page}`;
+
+    let API_URL = `${this.REST_API}/api/user/allrequests`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+  getUserLeaveDetail(): Observable<any> {
+    let API_URL = `${this.REST_API}/api/user/userLeaveDetail`;
+    return this.httpClient.get(API_URL).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+
+
+  // getUserLeaveRequest page: any, start: any
+  getUserLeaveRequest(page: any, start: any): Observable<any> {
+
+    const queryParams = `?start=${start}&length=${page}`;
+    let API_URL = `${this.REST_API}/api/user/userLeaveRequest`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+  getUserInfo(id: any): Observable<any> {
+    console.log(id)
+    let API_URL = `${this.REST_API}/api/user/info`;
+    const queryParams = `?id=${id}`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+
+
+  //userlist addfriend  friendRequests
+
+  friendRequests(): Observable<any> {
+
+    let API_URL = `${this.REST_API}/api/user/friendRequests`;
+    return this.httpClient.get(API_URL).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+  userlist(page: any, limit: any): Observable<any> {
+    const queryParams = `?page=${page}&skip=${limit}`;
+    console.log(queryParams)
+    let API_URL = `${this.REST_API}/api/user/userlist`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+  addfriend(id: any): Observable<any> {
+    const queryParams = `?draw=${id}`;
+    console.log(queryParams)
+    let API_URL = `${this.REST_API}/api/user/addfriend`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+  allfriends(page: any, limit: any): Observable<any> {
+    const queryParams = `?page=${page}&skip=${limit}`;
+    let API_URL = `${this.REST_API}/api/user/allfriends`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+  //acceptrequect  friendRequests allfriends rejectrequect
+  acceptrequect(id: any): Observable<any> {
+    const queryParams = `?draw=${id}`;
+    console.log(queryParams)
+    let API_URL = `${this.REST_API}/api/user/acceptrequect`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+  //rejectrequect 
+  rejectrequect(id: any): Observable<any> {
+    const queryParams = `?draw=${id}`;
+    console.log(queryParams)
+    let API_URL = `${this.REST_API}/api/user/rejectrequect`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+  //for notification  
+
+  notification(page: any, limit: number): Observable<any> {
+    console.log(page)
+    const queryParams = `?page=${page}&skip=${limit}`;
+    let API_URL = `${this.REST_API}/api/user/notification`;
+    return this.httpClient.get(API_URL + queryParams).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+  clearNotification(): Observable<any> {
+    let API_URL = `${this.REST_API}/api/user/clearNotification`;
+    return this.httpClient.get(API_URL).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+
+  notificationTotal(): Observable<any> {
+
+    let API_URL = `${this.REST_API}/api/user/notificationTotal`;
+    return this.httpClient.get(API_URL).pipe(map((res: any) => {
+      return res || {}
+    }))
+  }
+
+
+
+  // infinit looping 
+
+  getCommentaries(page: number): Observable<Comment[]> {
+    console.log("hello it is my page number ", page)
+    return this.httpClient.get(
+      `https://jsonplaceholder.typicode.com/comments?page=${page}&per_page=10`
+    ) as Observable<Comment[]>;
   }
 
 

@@ -1,16 +1,17 @@
+<h1 *ngIf="message.length>0">{{message.length}}</h1>
+
 <table class="table mt-5">
     <thead>
         <tr>
             <th scope="col">Leave Type</th>
-            <th scope="col">Balance</th>
+            <th scope="col">Total Leaves</th>
             <th scope="col">Availed</th>
             <th scope="col">Available</th>
-            <th scope="col">pending</th>
+            <th scope="col">Pending</th>
 
         </tr>
     </thead>
     <tbody>
-        <!-- <tr *ngFor="let e of posts?.data "> -->
         <tr>
 
             <td>{{requests?.leavetype}}</td>
